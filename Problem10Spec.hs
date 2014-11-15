@@ -3,8 +3,7 @@ import Test.QuickCheck
 import Control.Exception (evaluate)
 import Data.List
 
-countIt a = (length a, head a)
-encode a = map countIt (group a)
+encode a = map (\a -> (length a, head a)) (group a)
 
 main :: IO ()
 main = hspec $ do
