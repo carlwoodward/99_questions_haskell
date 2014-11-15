@@ -3,7 +3,7 @@ import Test.QuickCheck
 import Control.Exception (evaluate)
 import Data.List
 
-encode a = map (\a -> (length a, head a)) (group a)
+encode = map (\a -> (length a, head a)) . group
 
 main :: IO ()
 main = hspec $ do
