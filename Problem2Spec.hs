@@ -2,7 +2,8 @@ import Test.Hspec
 import Test.QuickCheck
 import Control.Exception (evaluate)
 
-secondLast [] = error "WTF"
+secondLast [] = -1
+secondLast [a] = -1
 secondLast [a, _] = a
 secondLast (_:xs) = secondLast xs
 
@@ -13,10 +14,10 @@ main = hspec $ do
       secondLast [1,2] `shouldBe` (1 :: Int)
 
     it "secondLast returns error" $ do
-      secondLast [] `shouldThrow` anyException
+      secondLast [] `shouldBe` (-1 :: Int)
 
     it "secondLast returns error with one value" $ do
-      pendingWith "secondLast [1] `shouldThrow` anyException"
+      secondLast [1] `shouldBe` (-1 :: Int)
 
     it "secondLast returns the first value when 2 are provided" $ do
       secondLast [1,2] `shouldBe` (1 :: Int)
